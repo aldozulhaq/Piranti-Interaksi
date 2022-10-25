@@ -7,14 +7,20 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] MazeNode nodePrefab;
     [SerializeField] Vector2Int mazeSize;
 
-    Vector3 startPoint;
-    Vector3 endPoint;
+    Vector3 startPos;
+    Vector3 endPos;
+
+    public GameObject ballPrefab;
+    public GameObject finishPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         //StartCoroutine(GenerateMaze(mazeSize));
         GenerateInstantMaze(mazeSize);
+
+        Instantiate(ballPrefab, startPos + new Vector3(0, 1.5f, 0), Quaternion.identity);
+        Instantiate(finishPrefab, endPos + new Vector3(0, 1.5f, 0), Quaternion.identity);
     }
 
     void GenerateInstantMaze(Vector2Int size)
@@ -31,6 +37,9 @@ public class MazeGenerator : MonoBehaviour
                 nodes.Add(newNode);
             }
         }
+
+        startPos = nodes[nodes.Count - 1].transform.position;
+        endPos = nodes[nodes.Count / 2].transform.position;
 
         List<MazeNode> currentPath = new List<MazeNode>();
         List<MazeNode> completedNode = new List<MazeNode>();
