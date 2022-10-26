@@ -24,7 +24,7 @@ public class KotakBehaviour : MonoBehaviour
         try
         {
             data_string = data_stream.ReadLine();
-            data_stream.ReadTimeout = 100;
+            data_stream.ReadTimeout = 1000;
             string[] datas = data_string.Split('|');
 
             float x = float.Parse(datas[0]) - 25;
