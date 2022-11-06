@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Mainmenu : MonoBehaviour
@@ -48,5 +45,25 @@ public class Mainmenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void PlayGameEZ()
+    {
+        GameManager.camPos = new Vector3(.2f, 9.28f, 0.6f);
+        MazeGenerator.ms = new Vector2Int(5, 5);
+        PlayGame();
+    }
+
+    public void PlayGameIM()
+    {
+        GameManager.camPos = new Vector3(3f, 16f, 1.75f);
+        MazeGenerator.ms = new Vector2Int(10, 10);
+        PlayGame();
+    }
+
+    public void PlayGameHR()
+    {
+        GameManager.camPos = new Vector3(3f, 22f, 3.1f);
+        MazeGenerator.ms = new Vector2Int(15, 15);
+        PlayGame();
+    }
 }
-    

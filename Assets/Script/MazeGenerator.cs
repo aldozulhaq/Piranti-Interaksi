@@ -7,23 +7,35 @@ public class MazeGenerator : MonoBehaviour
     [SerializeField] MazeNode nodePrefab;
     [SerializeField] Vector2Int mazeSize;
 
+    public static Vector2Int ms;
+
     Vector3 startPos;
     Vector3 endPos;
 
     public GameObject ballPrefab;
     public GameObject finishPrefab;
 
+    private void Awake()
+    {
+        if (ms[0] > 0 && ms[1] > 0)
+            mazeSize = ms;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         //StartCoroutine(GenerateMaze(mazeSize));
         GenerateInstantMaze(mazeSize);
-
-        Instantiate(ballPrefab, startPos + new Vector3(0, 1.5f, 0), Quaternion.identity);
-        Instantiate(finishPrefab, endPos + new Vector3(0, 1.5f, 0), Quaternion.identity);
+        InstantiateStuff();
     }
 
-    void GenerateInstantMaze(Vector2Int size)
+    public void InstantiateStuff()
+    {
+        Instantiate(ballPrefab, startPos + new Vector3(0, 2f, 0), Quaternion.identity);
+        Instantiate(finishPrefab, endPos + new Vector3(0, 1.5f, 0), Quaternion.identity, transform);
+    }
+
+    public void GenerateInstantMaze(Vector2Int size)
     {
         List<MazeNode> nodes = new List<MazeNode>();
 
@@ -143,7 +155,7 @@ public class MazeGenerator : MonoBehaviour
         {
             for (int y = 0; y < size.y; y++)
             {
-                Vector3 nodePos = new Vector3(x * 1.5f - (size.x / 2f), 0, y * 1.5f - (size.y / 2f) );
+                Vector3 nodePos = new Vector3(x * 1.5f - (size.x / 2f), 0, y * 1.5f - (size.y / 2f));
                 MazeNode newNode = Instantiate(nodePrefab, nodePos, Quaternion.identity, transform);
                 nodes.Add(newNode);
 
@@ -157,7 +169,7 @@ public class MazeGenerator : MonoBehaviour
 
         // choose starting node
         currentPath.Add(nodes[Random.Range(0, nodes.Count)]);
-        currentPath[0].SetState(NodeState.Current); 
+        currentPath[0].SetState(NodeState.Current);
 
         while (completedNode.Count < nodes.Count)
         {
