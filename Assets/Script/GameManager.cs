@@ -6,10 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public Camera cam;
     public static Vector3 camPos;
+    public static string Difficulty;
     Timer tr;
 
     public GameObject winPanel;
     public TMP_Text timePanel;
+    public PlayerData pd;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +56,37 @@ public class GameManager : MonoBehaviour
     public void FinishGame()
     {
         PauseGame();
-        timePanel.text = tr.currentTime.ToString();
+        timePanel.text = tr.currentTime.ToString("0.##");
         winPanel.SetActive(true);
+        SetBestTime();
+    }
+
+    public void SetBestTime()
+    {
+        float time;
+        switch (Difficulty)
+        {
+            case "ez":
+                time = float.Parse(pd.easyTime);
+                if (time > tr.currentTime || time == 0)
+                {
+                    pd.easyTime = tr.currentTime.ToString("0.##");
+                }
+                break;
+            case "im":
+                time = float.Parse(pd.medTime);
+                if (time > tr.currentTime || time == 0)
+                {
+                    pd.medTime = tr.currentTime.ToString("0.##");
+                }
+                break;
+            case "hr":
+                time = float.Parse(pd.hardTime);
+                if (time > tr.currentTime || time == 0)
+                {
+                    pd.hardTime = tr.currentTime.ToString("0.##");
+                }
+                break;
+        }
     }
 }

@@ -725,6 +725,7 @@ MonoBehaviour:
   cam: {fileID: 1753721866}
   winPanel: {fileID: 1447037994}
   timePanel: {fileID: 1690318294}
+  pd: {fileID: 11400000, guid: 8421a26dd26be554f97d99fa7048aa26, type: 2}
 --- !u!4 &1009922764
 Transform:
   m_ObjectHideFlags: 0
@@ -780,8 +781,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9a808580c3c37ad4fab9bbbe171430ba, type: 2}
-  m_sharedMaterial: {fileID: -5490035190930167950, guid: 9a808580c3c37ad4fab9bbbe171430ba, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d99842dec843f394d830154c3314296d, type: 2}
+  m_sharedMaterial: {fileID: -3631170502968017871, guid: d99842dec843f394d830154c3314296d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -931,7 +932,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418025166}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 219097421a12f974e884b1d0dd75ea7a, type: 3}
   m_Name: 
